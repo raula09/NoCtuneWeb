@@ -8,11 +8,13 @@ export default function NoctuneLandingPart1() {
   const [currentWord, setCurrentWord] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [musicBars, setMusicBars] = useState(Array(40).fill(0).map(() => Math.random() * 100));
+  const [particles, setParticles] = useState([]);
 
   const rotatingWords = ['Freedom', 'Privacy', 'Control', 'Quality'];
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowIntro(false), 3000);
+    const timer = setTimeout(() => setShowIntro(false), 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -36,7 +38,6 @@ export default function NoctuneLandingPart1() {
         clearInterval(typingInterval);
          
         setTimeout(() => {
-           
           let deleteIndex = word.length;
           const deletingInterval = setInterval(() => {
             if (deleteIndex >= 0) {
@@ -60,49 +61,70 @@ export default function NoctuneLandingPart1() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMusicBars(prev => prev.map(() => Math.random() * 100));
+    }, 150);
+    return () => clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const newParticles = Array(25).fill(0).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 2,
+      speed: Math.random() * 0.3 + 0.1,
+      opacity: Math.random() * 0.4 + 0.2
+    }));
+    setParticles(newParticles);
+
+    const interval = setInterval(() => {
+      setParticles(prev => prev.map(p => ({
+        ...p,
+        y: (p.y + p.speed) % 100,
+        x: p.x + Math.sin(Date.now() / 1000 + p.id) * 0.1
+      })));
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-black to-black" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/20 rounded-full blur-3xl opacity-60" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/15 rounded-full blur-3xl opacity-50" />
-         
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full bg-white/40"
-              style={{
-                width: '2px',
-                height: '2px',
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `twinkle ${3 + Math.random() * 4}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 3}s`,
-              }}
-            />
-          ))}
-        </div>
+        <div className="absolute inset-0 bg-black" />
+        {particles.map(p => (
+          <div
+            key={p.id}
+            className="absolute rounded-full bg-white"
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              opacity: p.opacity,
+              transition: 'all 0.05s linear'
+            }}
+          />
+        ))}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
- 
       {showIntro && (
-        <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-radial from-white/30 via-transparent to-transparent\" />
-          
-          <div className="relative flex flex-col items-center gap-8">
+        <div className="fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-500">
+          <div className="flex flex-col items-center gap-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-white rounded-full blur-3xl opacity-50 animate-pulse" />
-              <div className="relative bg-gradient-to-br from-black/30 to-white/30 backdrop-blur-xl p-16 rounded-full border-2 border-white/50">
-                <Music className="w-32 h-32 text-white animate-float" />
+              <div className="absolute inset-0 bg-white rounded-full blur-2xl opacity-50 animate-pulse" />
+              <div className="relative bg-white p-12 rounded-full animate-bounce">
+                <Music className="w-24 h-24 text-black" />
               </div>
             </div>
 
-            <div className="text-center space-y-4">
-              <h1 className="text-7xl font-black tracking-wider bg-gradient-to-r from-black via-white to-black bg-clip-text text-transparent">
+            <div className="text-center space-y-2">
+              <h1 className="text-6xl font-bold tracking-wider text-white animate-pulse">
                 NOCTUNE
               </h1>
-              <p className="text-white text-sm tracking-widest uppercase font-semibold">
+              <p className="text-gray-400 text-sm tracking-widest uppercase font-medium">
                 Your Music Universe
               </p>
             </div>
@@ -110,21 +132,18 @@ export default function NoctuneLandingPart1() {
         </div>
       )}
  
-      <nav className={`fixed w-full z-40 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/20' : 'bg-transparent'}`}>
+      <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-3 group cursor-pointer">
-              <div className="relative">
-                <div className="absolute inset-0 bg-white rounded-xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-                <div className="relative bg-gradient-to-br from-black to-white p-3 rounded-xl group-hover:scale-105 transition-transform">
-                  <Music className="w-7 h-7 text-black" />
-                </div>
+            <div className="flex items-center space-x-3 cursor-pointer group">
+              <div className="bg-white p-2.5 rounded-lg group-hover:scale-110 transition-transform">
+                <Music className="w-6 h-6 text-black" />
               </div>
               <div className="flex flex-col">
-                <span className="text-3xl font-black tracking-wider bg-gradient-to-r from-black to-white bg-clip-text text-transparent">
+                <span className="text-2xl font-bold tracking-wide text-white">
                   NOCTUNE
                 </span>
-                <span className="text-xs text-white/70 tracking-wider uppercase">Music Player</span>
+                <span className="text-xs text-gray-500 tracking-wider uppercase">Music Player</span>
               </div>
             </div>
             
@@ -133,18 +152,18 @@ export default function NoctuneLandingPart1() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="relative text-gray-300 hover:text-white transition-colors group py-2 font-semibold"
+                  className="text-gray-400 hover:text-white transition-colors py-2 font-medium relative group"
                 >
                   {item}
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-black to-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
               <a 
                 href="https://github.com/raula09/NoctuneMusicPlayer/releases/download/v1.3.0/MusicPlayerApp-windows.zip"
-                className="relative overflow-hidden px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-black to-white text-black hover:shadow-lg hover:shadow-black/50 transition-all group"
+                className="px-6 py-2.5 rounded-lg font-medium bg-white text-black hover:bg-gray-200 hover:scale-105 transition-all"
               >
                 <span className="flex items-center gap-2">
-                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                  <Download className="w-4 h-4" />
                   Download
                 </span>
               </a>
@@ -160,13 +179,13 @@ export default function NoctuneLandingPart1() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/20">
+          <div className="md:hidden bg-black/95 backdrop-blur-lg border-t border-white/10">
             <div className="px-6 py-6 space-y-4">
               {['Features', 'How It Works', 'Download'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="block text-gray-300 hover:text-white transition-colors py-2 font-semibold"
+                  className="block text-gray-400 hover:text-white transition-colors py-2 font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item}
@@ -174,7 +193,7 @@ export default function NoctuneLandingPart1() {
               ))}
               <a 
                 href="https://github.com/raula09/NoctuneMusicPlayer/releases/download/v1.3.0/MusicPlayerApp-windows.zip"
-                className="block bg-gradient-to-r from-black to-white text-black px-6 py-3 rounded-xl font-bold text-center"
+                className="block bg-white text-black px-6 py-3 rounded-lg font-medium text-center hover:bg-gray-200 transition-colors"
               >
                 Download Now
               </a>
@@ -182,28 +201,27 @@ export default function NoctuneLandingPart1() {
           </div>
         )}
       </nav>
- 
       <section className="relative pt-32 pb-20 px-6 lg:px-8 min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/30 backdrop-blur-xl">
-                <Shield className="w-4 h-4 text-white" />
-                <span className="text-sm font-bold text-white tracking-wide">100% OFFLINE & PRIVATE</span>
+            <div className="space-y-8 relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 backdrop-blur-sm hover:border-white/40 transition-all">
+                <Shield className="w-4 h-4 text-white animate-pulse" />
+                <span className="text-sm font-medium text-white tracking-wide">100% OFFLINE & PRIVATE</span>
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-black leading-tight tracking-tight">
+              <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
                 Your Music,
                 <br />
-                <span className="bg-gradient-to-r from-black via-white to-black bg-clip-text text-transparent inline-flex items-baseline">
+                <span className="text-white inline-flex items-baseline">
                   Your {displayedText}
                   {isTyping && <span className="inline-block w-0.5 h-12 lg:h-14 bg-white ml-1 animate-pulse" />}
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-300 leading-relaxed max-w-xl">
-                NoCtune is a <span className="text-white font-bold">fully offline music player</span> that respects your privacy. Upload MP3 or FLAC, add lyrics, and enjoy your collection without internet.
+              <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
+                Noctune is a <span className="text-white font-medium">fully offline music player</span> that respects your privacy. Upload MP3 or FLAC, add lyrics, and enjoy your collection without internet.
               </p>
 
               <div className="grid grid-cols-2 gap-4 max-w-xl pt-2">
@@ -213,22 +231,30 @@ export default function NoctuneLandingPart1() {
                   { text: 'Lyrics Display', icon: <Mic2 className="w-5 h-5" /> },
                   { text: 'Unlimited Library', icon: <Zap className="w-5 h-5" /> }
                 ].map((feature, i) => (
-                  <div key={i} className="flex items-center gap-3 group cursor-pointer p-3 rounded-xl hover:bg-white/5 transition-colors">
-                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white group-hover:scale-105 transition-transform">
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-all hover:scale-105 group">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white group-hover:bg-white/20 transition-colors">
                       {feature.icon}
                     </div>
-                    <span className="text-sm font-semibold text-gray-300">{feature.text}</span>
+                    <span className="text-sm font-medium text-gray-300">{feature.text}</span>
                   </div>
                 ))}
               </div>
-
+ <div className="absolute -inset-4 flex items-end justify-center gap-1 opacity-20 blur-sm -translate-x-16" >
+                {musicBars.map((height, i) => (
+                  <div
+                    key={i}
+                    className="w-2 bg-gradient-to-t from-white to-gray-500 rounded-full transition-all duration-150"
+                    style={{ height: `${height}%` }}
+                  />
+                ))}
+              </div>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a 
                   href="https://github.com/raula09/NoctuneMusicPlayer/releases/download/v1.3.0/MusicPlayerApp-windows.zip"
-                  className="group relative overflow-hidden px-8 py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-black to-white text-black hover:shadow-lg hover:shadow-black/50 transition-all"
+                  className="px-8 py-4 rounded-lg font-medium text-lg bg-white text-black hover:bg-gray-200 hover:scale-105 transition-all group"
                 >
                   <span className="flex items-center justify-center gap-2">
-                    <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+                    <Download className="w-5 h-5 group-hover:animate-bounce" />
                     Download for Windows
                   </span>
                 </a>
@@ -241,7 +267,7 @@ export default function NoctuneLandingPart1() {
                     btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Copied!</span>';
                     setTimeout(() => btn.innerHTML = originalText, 2000);
                   }}
-                  className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/50 hover:border-white hover:bg-white/5 transition-all text-white"
+                  className="px-8 py-4 rounded-lg font-medium text-lg border-2 border-white/20 hover:border-white/40 hover:bg-white/5 hover:scale-105 transition-all text-white"
                 >
                   <span className="flex items-center justify-center gap-2">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -253,25 +279,32 @@ export default function NoctuneLandingPart1() {
               </div>
 
               <p className="text-sm text-gray-500 flex items-center gap-2 pt-2">
-                <Sparkles className="w-4 h-4 text-white" />
+                <Sparkles className="w-4 h-4 animate-pulse" />
                 Free • Open Source • No Account Required
               </p>
             </div>
  
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-white/20 rounded-full blur-3xl" />
-              
-              <div className="relative bg-gradient-to-br from-neutral-900/80 to-black/80 backdrop-blur-xl rounded-3xl p-6 border border-white/20 hover:border-white/30 transition-all">
+              <div className="relative">
+              <div className="relative bg-neutral-900 rounded-2xl p-6 border border-white/10 backdrop-blur-sm hover:border-white/20 transition-all">
                 
-                <div className="relative aspect-square bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-2xl overflow-hidden mb-6 border border-white/10">
-                  <div className="absolute inset-0 bg-gradient-radial from-white/30 via-transparent to-transparent" />
+                <div className="relative aspect-square bg-neutral-800 rounded-xl overflow-hidden mb-6 group">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Music className="w-32 h-32 text-white/30" />
+                    <Music className="w-32 h-32 text-white/20 group-hover:scale-110 transition-transform" />
                   </div>
                   
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-xl px-4 py-2 rounded-xl border border-white/30">
-                    <span className="text-white text-xs font-bold flex items-center gap-2">
-                      <Mic2 className="w-4 h-4" />
+                  <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center gap-1 p-4">
+                    {musicBars.slice(0, 20).map((height, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 bg-white/30 rounded-t transition-all duration-150"
+                        style={{ height: `${height * 0.4}%` }}
+                      />
+                    ))}
+                  </div>
+                  
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/20">
+                    <span className="text-white text-xs font-medium flex items-center gap-2">
+                      <Mic2 className="w-3.5 h-3.5 animate-pulse" />
                       LYRICS
                     </span>
                   </div>
@@ -279,40 +312,40 @@ export default function NoctuneLandingPart1() {
 
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <div className="h-6 bg-gradient-to-r from-white/40 to-transparent rounded-xl w-4/5" />
-                    <div className="h-4 bg-neutral-800/50 rounded-xl w-2/3" />
+                    <div className="h-6 bg-white/80 rounded w-4/5 animate-pulse" />
+                    <div className="h-4 bg-white/30 rounded w-2/3" />
                   </div>
 
                   <div className="space-y-2">
-                    <div className="h-2 bg-neutral-800/50 rounded-full overflow-hidden">
-                      <div className="h-full w-2/5 bg-gradient-to-r from-black to-white rounded-full relative">
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg" />
+                    <div className="h-1.5 bg-neutral-800 rounded-full overflow-hidden">
+                      <div className="h-full w-2/5 bg-gradient-to-r from-white to-gray-300 rounded-full relative">
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg shadow-white/50 animate-pulse" />
                       </div>
                     </div>
-                    <div className="flex justify-between text-xs text-gray-500 font-semibold">
+                    <div className="flex justify-between text-xs text-gray-500 font-medium">
                       <span>1:23</span>
                       <span>3:45</span>
                     </div>
                   </div>
 
                   <div className="flex justify-between items-center pt-2">
-                    <Heart className="w-7 h-7 text-white fill-white cursor-pointer hover:scale-110 transition-transform" />
+                    <Heart className="w-6 h-6 text-white fill-white cursor-pointer hover:opacity-70 hover:scale-110 transition-all" />
                     <div className="flex items-center gap-6">
-                      <button className="w-10 h-10 rounded-full bg-neutral-800/50 flex items-center justify-center hover:bg-neutral-700 transition-colors">
+                      <button className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 hover:scale-110 transition-all">
                         <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M6 6h2v12H6zm10 0h2v12h-2z"/>
                         </svg>
                       </button>
-                      <button className="w-16 h-16 rounded-full bg-gradient-to-br from-black to-white flex items-center justify-center shadow-lg shadow-black/50 hover:scale-105 transition-transform">
-                        <Play className="w-8 h-8 fill-black text-black ml-1" />
+                      <button className="w-14 h-14 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 transition-all shadow-lg shadow-white/20">
+                        <Play className="w-7 h-7 fill-black text-black ml-1" />
                       </button>
-                      <button className="w-10 h-10 rounded-full bg-neutral-800/50 flex items-center justify-center hover:bg-neutral-700 transition-colors">
+                      <button className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 hover:scale-110 transition-all">
                         <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
                         </svg>
                       </button>
                     </div>
-                    <ListMusic className="w-7 h-7 text-gray-600 cursor-pointer hover:text-white transition-colors" />
+                    <ListMusic className="w-6 h-6 text-gray-600 cursor-pointer hover:text-white hover:scale-110 transition-all" />
                   </div>
                 </div>
               </div>
@@ -320,21 +353,10 @@ export default function NoctuneLandingPart1() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-white" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <ChevronDown className="w-6 h-6 text-gray-600 animate-bounce" />
         </div>
       </section>
-
-      <style jsx>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.2; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.5); }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-      `}</style>
     </div>
   );
 }
