@@ -239,15 +239,7 @@ export default function NoctuneLandingPart1() {
                   </div>
                 ))}
               </div>
- <div className="absolute -inset-4 flex items-end justify-center gap-1 opacity-20 blur-sm -translate-x-16" >
-                {musicBars.map((height, i) => (
-                  <div
-                    key={i}
-                    className="w-2 bg-gradient-to-t from-white to-gray-500 rounded-full transition-all duration-150"
-                    style={{ height: `${height}%` }}
-                  />
-                ))}
-              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a 
                   href="https://github.com/raula09/NoctuneMusicPlayer/releases/download/v1.3.0/MusicPlayerApp-windows.zip"
