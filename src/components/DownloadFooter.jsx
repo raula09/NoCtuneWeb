@@ -67,8 +67,8 @@ export default function NoctuneLandingPart4() {
     <div className="bg-black text-white relative overflow-hidden">
       
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-40" />
       </div>
   
       <section id="download" className="relative py-24 px-6 lg:px-8">
@@ -76,7 +76,7 @@ export default function NoctuneLandingPart4() {
           <div 
             id="download-cta"
             data-animate
-            className="relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-emerald-500/30 overflow-hidden"
+            className="relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/30 overflow-hidden"
             style={{
               opacity: isVisible['download-cta'] ? 1 : 0,
               transform: isVisible['download-cta'] ? 'translateY(0)' : 'translateY(40px)',
@@ -84,16 +84,16 @@ export default function NoctuneLandingPart4() {
             }}
           > 
             <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-500/10 to-transparent rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-white/10 to-transparent rounded-full blur-3xl" />
             </div>
 
             <div className="relative text-center space-y-8">
               
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm">
-                  <Star className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-semibold text-emerald-400 tracking-wide">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/30 backdrop-blur-sm">
+                  <Star className="w-4 h-4 text-white" />
+                  <span className="text-sm font-semibold text-white tracking-wide">
                     {downloadCount > 0 && `${downloadCount.toLocaleString()}+ DOWNLOADS`}
                   </span>
                 </div>
@@ -101,7 +101,7 @@ export default function NoctuneLandingPart4() {
                 <h2 className="text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                   Ready to Take Control of
                   <br />
-                  <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-black via-white to-black bg-clip-text text-transparent">
                     Your Music Library?
                   </span>
                 </h2>
@@ -116,7 +116,7 @@ export default function NoctuneLandingPart4() {
                     href="https://github.com/raula09/NoctuneMusicPlayer/releases/download/v1.3.0/MusicPlayerApp-windows.zip"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative overflow-hidden px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 bg-gradient-to-r from-emerald-500 to-green-500 hover:shadow-lg hover:shadow-emerald-500/50"
+                    className="group relative overflow-hidden px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 bg-gradient-to-r from-black to-white hover:shadow-lg hover:shadow-black/50"
                   >
                     <span className="relative z-10 text-black flex items-center justify-center gap-2">
                       <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
@@ -133,7 +133,7 @@ export default function NoctuneLandingPart4() {
                       btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Copied to Clipboard!</span>';
                       setTimeout(() => btn.innerHTML = originalText, 2000);
                     }}
-                    className="group px-8 py-4 rounded-xl font-bold text-lg border-2 border-emerald-500/50 hover:border-emerald-500 transition-all hover:scale-105 hover:bg-emerald-500/5 text-white"
+                    className="group px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/50 hover:border-white transition-all hover:scale-105 hover:bg-white/5 text-white"
                   >
                     <span className="flex items-center justify-center gap-2">
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -145,7 +145,7 @@ export default function NoctuneLandingPart4() {
                 </div>
  
                 <div className="flex items-center gap-3 text-sm text-gray-400">
-                  <Zap className="w-4 h-4 text-emerald-400" />
+                  <Zap className="w-4 h-4 text-white" />
                   <span>Version 1.3.0</span>
                   <span className="w-1 h-1 bg-gray-600 rounded-full" />
                   <span>Windows & Arch Linux</span>
@@ -163,8 +163,8 @@ export default function NoctuneLandingPart4() {
                       transition: `all 0.5s ease-out ${index * 0.1}s`
                     }}
                   >
-                    <div className="relative bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm rounded-xl p-5 border border-emerald-500/10 hover:border-emerald-500/30 transition-all hover:scale-105">
-                      <div className="text-2xl font-black bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent mb-1">
+                    <div className="relative bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-white/30 transition-all hover:scale-105">
+                      <div className="text-2xl font-black bg-gradient-to-r from-black to-white bg-clip-text text-transparent mb-1">
                         {benefit.label}
                       </div>
                       <div className="text-sm text-gray-400">{benefit.sublabel}</div>
@@ -174,7 +174,7 @@ export default function NoctuneLandingPart4() {
               </div>
   
               <div className="flex items-center justify-center gap-2 text-sm text-gray-500 pt-2">
-                <Shield className="w-4 h-4 text-emerald-500" />
+                <Shield className="w-4 h-4 text-white" />
                 <span>No credit card • No sign-up • No tracking</span>
               </div>
             </div>
@@ -182,19 +182,19 @@ export default function NoctuneLandingPart4() {
         </div>
       </section>
    
-      <footer className="relative py-16 px-6 lg:px-8 border-t border-emerald-500/10">
+      <footer className="relative py-16 px-6 lg:px-8 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
             <div className="space-y-4">
               <div className="flex items-center space-x-3 group cursor-pointer">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-emerald-500 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
-                  <div className="relative bg-gradient-to-br from-emerald-500 to-green-600 p-2.5 rounded-xl">
+                  <div className="absolute inset-0 bg-white rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
+                  <div className="relative bg-gradient-to-br from-black to-white p-2.5 rounded-xl">
                     <Music className="w-6 h-6 text-black" />
                   </div>
                 </div>
-                <span className="text-2xl font-black tracking-wider bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
+                <span className="text-2xl font-black tracking-wider bg-gradient-to-r from-black to-white bg-clip-text text-transparent">
                   NOCTUNE
                 </span>
               </div>
@@ -203,9 +203,9 @@ export default function NoctuneLandingPart4() {
                 Your music, your library, your privacy. The offline music player that respects your freedom.
               </p>
               
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm">
-                <Shield className="w-3 h-3 text-emerald-400" />
-                <span className="text-xs font-semibold text-emerald-400">100% OFFLINE</span>
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/30 rounded-full px-3 py-1.5 backdrop-blur-sm">
+                <Shield className="w-3 h-3 text-white" />
+                <span className="text-xs font-semibold text-white">100% OFFLINE</span>
               </div>
             </div>
  
@@ -219,11 +219,11 @@ export default function NoctuneLandingPart4() {
                         href={link.href}
                         target={link.href.startsWith('http') ? '_blank' : undefined}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-gray-400 hover:text-emerald-400 transition-colors text-sm inline-flex items-center gap-1.5 group"
+                        className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-1.5 group"
                       >
                         <span className="relative">
                           {link.name}
-                          <span className="absolute inset-x-0 -bottom-0.5 h-px bg-emerald-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                          <span className="absolute inset-x-0 -bottom-0.5 h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                         </span>
                         {link.href.startsWith('http') && (
                           <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -236,7 +236,7 @@ export default function NoctuneLandingPart4() {
             ))}
           </div>
   
-          <div className="pt-8 border-t border-emerald-500/10">
+          <div className="pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <span>&copy; 2024 NoCtune.</span>
@@ -253,16 +253,16 @@ export default function NoctuneLandingPart4() {
                   href="https://github.com/raula09/NoctuneMusicPlayer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-9 h-9 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-emerald-500/10 hover:border-emerald-500/30 flex items-center justify-center transition-all hover:scale-110"
+                  className="group w-9 h-9 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-white/10 hover:border-white/30 flex items-center justify-center transition-all hover:scale-110"
                 >
-                  <Github className="w-4 h-4 text-gray-400 group-hover:text-emerald-400 transition-colors" />
+                  <Github className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
                 </a>
                 
                 <a 
                   href="https://github.com/raula09/NoctuneMusicPlayer/stargazers"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-emerald-500/10 hover:border-emerald-500/30 transition-all hover:scale-105"
+                  className="group flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-white/10 hover:border-white/30 transition-all hover:scale-105"
                 >
                   <Star className="w-4 h-4 text-gray-400 group-hover:text-yellow-400 transition-colors" />
                   <span className="text-sm text-gray-400 group-hover:text-white transition-colors font-semibold">Star on GitHub</span>
@@ -271,7 +271,7 @@ export default function NoctuneLandingPart4() {
             </div>
           </div>
   
-          <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+          <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         </div>
       </footer>
     </div>

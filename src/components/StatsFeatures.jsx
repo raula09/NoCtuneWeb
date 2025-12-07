@@ -39,25 +39,25 @@ export default function NoctuneLandingPart2() {
       number: "100%", 
       label: "Offline", 
       icon: <HardDrive className="w-7 h-7" />,
-      color: "from-emerald-500 to-green-500"
+      color: "from-black to-white"
     },
     { 
       number: "0MB", 
       label: "Cloud Storage", 
       icon: <Lock className="w-7 h-7" />,
-      color: "from-teal-500 to-emerald-500"
+      color: "from-white to-black"
     },
     { 
       number: "∞", 
       label: "Library Size", 
       icon: <Zap className="w-7 h-7" />,
-      color: "from-green-500 to-teal-500"
+      color: "from-white to-black"
     },
     { 
       number: "100%", 
       label: "Privacy", 
       icon: <Shield className="w-7 h-7" />,
-      color: "from-emerald-500 to-green-600"
+      color: "from-black to-white"
     }
   ];
 
@@ -66,37 +66,37 @@ export default function NoctuneLandingPart2() {
       icon: <HardDrive className="w-7 h-7" />,
       title: "100% Offline",
       description: "No internet needed. Your music stays on your device, always accessible.",
-      gradient: "from-emerald-500 to-green-500"
+      gradient: "from-black to-white"
     },
     {
       icon: <FileAudio className="w-7 h-7" />,
       title: "MP3 & FLAC Support",
       description: "Upload your music library in high-quality formats. Supports MP3 and FLAC.",
-      gradient: "from-teal-500 to-emerald-500"
+      gradient: "from-white to-black"
     },
     {
       icon: <Mic2 className="w-7 h-7" />,
       title: "Lyrics Display",
       description: "Add lyrics files and sing along with synchronized text display.",
-      gradient: "from-green-500 to-teal-500"
+      gradient: "from-white to-black"
     },
     {
       icon: <Maximize2 className="w-7 h-7" />,
       title: "Fullscreen Mode",
       description: "Immersive fullscreen experience for focused listening sessions.",
-      gradient: "from-emerald-500 to-green-600"
+      gradient: "from-black to-white"
     },
     {
       icon: <ListMusic className="w-7 h-7" />,
       title: "Smart Playlists",
       description: "Create unlimited playlists and organize your music your way.",
-      gradient: "from-teal-500 to-green-500"
+      gradient: "from-white to-black"
     },
     {
       icon: <Heart className="w-7 h-7" />,
       title: "Like & Favorite",
       description: "Mark your favorite tracks and build your personal collection.",
-      gradient: "from-emerald-500 to-teal-500"
+      gradient: "from-black to-white"
     }
   ];
 
@@ -104,8 +104,8 @@ export default function NoctuneLandingPart2() {
     <div className="bg-black text-white">
       
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-40" />
       </div>
    
       <section className="relative py-20 px-6 lg:px-8">
@@ -123,7 +123,7 @@ export default function NoctuneLandingPart2() {
                   transition: `all 0.6s ease-out ${index * 0.1}s`
                 }}
               >
-                <div className="relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-2xl p-6 border border-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105">
+                <div className="relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105">
                   
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} mb-4 transition-transform duration-300 group-hover:scale-110`}>
                     <div className="text-black">
@@ -159,15 +159,15 @@ export default function NoctuneLandingPart2() {
               transition: 'all 0.6s ease-out'
             }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-semibold text-emerald-400 tracking-wide">FEATURES</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/30 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-sm font-semibold text-white tracking-wide">FEATURES</span>
             </div>
             
             <h2 className="text-5xl lg:text-6xl font-black tracking-tight">
               Everything You Need,
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-black via-white to-black bg-clip-text text-transparent">
                 Nothing You Don't
               </span>
             </h2>
@@ -192,8 +192,8 @@ export default function NoctuneLandingPart2() {
               >
                 <div className={`relative h-full bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-2xl p-6 border transition-all duration-300 ${
                   activeFeature === index 
-                    ? 'border-emerald-500/50 shadow-lg shadow-emerald-500/20' 
-                    : 'border-emerald-500/10 hover:border-emerald-500/30'
+                    ? 'border-white/50 shadow-lg shadow-white/20' 
+                    : 'border-white/10 hover:border-white/30'
                 } hover:scale-105`}>
                    
                   <div className="mb-5 inline-block">
@@ -204,7 +204,7 @@ export default function NoctuneLandingPart2() {
                     </div>
                   </div>
   
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
@@ -228,10 +228,10 @@ export default function NoctuneLandingPart2() {
               transition: 'opacity 0.6s ease-out 0.3s'
             }}
           >
-            <div className="inline-flex items-center gap-2 text-emerald-400">
-              <div className="w-12 h-px bg-gradient-to-r from-transparent to-emerald-500" />
+            <div className="inline-flex items-center gap-2 text-white">
+              <div className="w-12 h-px bg-gradient-to-r from-transparent to-white" />
               <span className="text-sm font-medium">And many more features coming soon</span>
-              <div className="w-12 h-px bg-gradient-to-l from-transparent to-emerald-500" />
+              <div className="w-12 h-px bg-gradient-to-l from-transparent to-white" />
             </div>
           </div>
         </div>

@@ -40,28 +40,28 @@ export default function NoctuneLandingPart3() {
       title: "Download & Install", 
       description: "Get NoCtune in seconds. No account required.",
       icon: <Download className="w-6 h-6" />,
-      color: "from-emerald-500 to-green-500"
+      color: "from-black to-white"
     },
     { 
       step: "2", 
       title: "Upload Your Music", 
       description: "Drag and drop MP3 or FLAC files into the app.",
       icon: <Upload className="w-6 h-6" />,
-      color: "from-teal-500 to-emerald-500"
+      color: "from-white to-black"
     },
     { 
       step: "3", 
       title: "Add Lyrics (Optional)", 
       description: "Import lyrics files for synchronized display.",
       icon: <FileAudio className="w-6 h-6" />,
-      color: "from-green-500 to-teal-500"
+      color: "from-white to-black"
     },
     { 
       step: "4", 
       title: "Enjoy Offline", 
       description: "Listen anytime, anywhere. No internet needed.",
       icon: <Play className="w-6 h-6" />,
-      color: "from-emerald-500 to-green-600"
+      color: "from-black to-white"
     }
   ];
 
@@ -87,8 +87,8 @@ export default function NoctuneLandingPart3() {
     <div className="bg-black text-white relative overflow-hidden">
      
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-40" />
       </div>
  
       <section id="how-it-works" className="relative py-24 px-6 lg:px-8">
@@ -104,14 +104,14 @@ export default function NoctuneLandingPart3() {
               transition: 'all 0.6s ease-out'
             }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-semibold text-emerald-400 tracking-wide">HOW IT WORKS</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/30 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-sm font-semibold text-white tracking-wide">HOW IT WORKS</span>
             </div>
             
             <h2 className="text-5xl lg:text-6xl font-black tracking-tight">
               Get Started in{' '}
-              <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-black via-white to-black bg-clip-text text-transparent">
                 4 Simple Steps
               </span>
             </h2>
@@ -137,14 +137,14 @@ export default function NoctuneLandingPart3() {
               
                 {index < howItWorks.length - 1 && (
                   <div className="hidden lg:block absolute top-16 -right-3 w-6 z-10">
-                    <ArrowRight className="w-5 h-5 text-emerald-500/30 group-hover:text-emerald-500/60 transition-colors" />
+                    <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors" />
                   </div>
                 )}
  
                 <div className={`relative h-full bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-2xl p-6 border transition-all duration-300 ${
                   activeStep === index 
-                    ? 'border-emerald-500/50 shadow-lg shadow-emerald-500/20' 
-                    : 'border-emerald-500/10 hover:border-emerald-500/30'
+                    ? 'border-white/50 shadow-lg shadow-white/20' 
+                    : 'border-white/10 hover:border-white/30'
                 } hover:scale-105`}>
                    
                   <div className="absolute -top-4 -left-4 z-10">
@@ -159,7 +159,7 @@ export default function NoctuneLandingPart3() {
                     </div>
                   </div>
  
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
@@ -193,8 +193,8 @@ export default function NoctuneLandingPart3() {
                   key={i}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     activeStep === i 
-                      ? 'bg-emerald-500 scale-150' 
-                      : 'bg-emerald-500/30'
+                      ? 'bg-white scale-150' 
+                      : 'bg-white/30'
                   }`}
                 />
               ))}
@@ -205,11 +205,9 @@ export default function NoctuneLandingPart3() {
  
       <section className="relative py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-emerald-500/20 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/20 overflow-hidden">
              
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-50" />
-
-            <div className="relative grid lg:grid-cols-2 gap-12 items-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50" />            <div className="relative grid lg:grid-cols-2 gap-12 items-center">
                
               <div 
                 className="space-y-6" 
@@ -221,15 +219,15 @@ export default function NoctuneLandingPart3() {
                   transition: 'all 0.6s ease-out'
                 }}
               >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm">
-                  <Shield className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-semibold text-emerald-400 tracking-wide">PRIVACY FIRST</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/30 backdrop-blur-sm">
+                  <Shield className="w-4 h-4 text-white" />
+                  <span className="text-sm font-semibold text-white tracking-wide">PRIVACY FIRST</span>
                 </div>
 
                 <h2 className="text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                   Your Music,
                   <br />
-                  <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-black via-white to-black bg-clip-text text-transparent">
                     Your Privacy
                   </span>
                 </h2>
@@ -249,11 +247,11 @@ export default function NoctuneLandingPart3() {
                         transition: `all 0.5s ease-out ${index * 0.1 + 0.2}s`
                       }}
                     >
-                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
-                        <Check className="w-5 h-5 text-emerald-400" />
+                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-white/10 border border-white/30 flex items-center justify-center group-hover:bg-white/20 transition-all">
+                        <Check className="w-5 h-5 text-white" />
                       </div>
                       <div className="flex-1">
-                        <div className="font-semibold text-white mb-0.5 group-hover:text-emerald-400 transition-colors">
+                        <div className="font-semibold text-white mb-0.5 group-hover:text-white transition-colors">
                           {feature.title}
                         </div>
                         <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
@@ -264,8 +262,8 @@ export default function NoctuneLandingPart3() {
                   ))}
                 </div>
  
-                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl px-5 py-3 backdrop-blur-sm">
-                  <Shield className="w-7 h-7 text-emerald-400" />
+                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-white/10 to-white/10 border border-white/30 rounded-xl px-5 py-3 backdrop-blur-sm">
+                  <Shield className="w-7 h-7 text-white" />
                   <div>
                     <div className="text-sm font-semibold text-white">100% Privacy Guaranteed</div>
                     <div className="text-xs text-gray-400">Open source and auditable</div>
@@ -286,17 +284,17 @@ export default function NoctuneLandingPart3() {
                 <div className="space-y-6">
                    
                   <div className="relative group">
-                    <div className="relative bg-gradient-to-br from-neutral-900 to-black rounded-2xl p-6 border border-emerald-500/30 hover:border-emerald-500/50 transition-all">
+                    <div className="relative bg-gradient-to-br from-neutral-900 to-black rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all">
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-black to-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
                           <HardDrive className="w-7 h-7 text-black" />
                         </div>
                         <div className="flex-1">
                           <div className="font-bold text-lg text-white mb-1">Local Storage</div>
                           <div className="text-sm text-gray-400">All files on your device</div>
                         </div>
-                        <div className="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-500 flex items-center justify-center">
-                          <Check className="w-5 h-5 text-emerald-400" />
+                        <div className="w-9 h-9 rounded-full bg-white/20 border border-white flex items-center justify-center">
+                          <Check className="w-5 h-5 text-white" />
                         </div>
                       </div>
  
@@ -304,7 +302,7 @@ export default function NoctuneLandingPart3() {
                         {[...Array(3)].map((_, i) => (
                           <div 
                             key={i}
-                            className="flex-1 h-1.5 bg-gradient-to-r from-emerald-500/50 to-green-500/50 rounded-full"
+                            className="flex-1 h-1.5 bg-gradient-to-r from-white/50 to-white/50 rounded-full"
                           />
                         ))}
                       </div>
@@ -312,9 +310,9 @@ export default function NoctuneLandingPart3() {
                   </div>
  
                   <div className="flex items-center gap-4">
-                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                     <span className="text-sm text-gray-500 font-semibold">VS</span>
-                    <div className="flex-1 h-px bg-gradient-to-l from-transparent via-emerald-500/30 to-transparent" />
+                    <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/30 to-transparent" />
                   </div>
  
                   <div className="relative opacity-50">
